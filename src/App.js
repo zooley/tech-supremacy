@@ -1,10 +1,9 @@
 import ReactCountryFlag from 'react-country-flag';
-import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
+import { ComposableMap, Geographies, Geography, Graticule } from 'react-simple-maps';
 import { Newsfeed } from './Newsfeed';
 import { Bidding } from './Bidding';
 import { Activity } from './Activity';
 import { GameOver } from './GameOver';
-import './css/App.css';
 
 const d = new Date();
 let year = d.getFullYear();
@@ -16,7 +15,7 @@ let units = '000,000,000';
 let freedom = '0.00';
 
 const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
-const seasons = ['Winter', 'Spring', 'Summer', 'Autumn'];
+const seasons = [1, 2, 3, 4];
 
 function App() {
   if (complete) {
@@ -24,17 +23,17 @@ function App() {
   }
   return (
     <div className="app d-flex flex-column">
-      <header className="app-header shadow-sm rounded-bottom d-flex">
+      <header className="app-header d-flex">
         <h1 className="sr-only visually-hidden">Tech Sumpremacy</h1>
         <div className="app-stage flex-fill">
           <h2 className="app-head">
-            <span className="app-year">{year}</span> &bull; <span className="app-season">{seasons[0]}</span>
+            <span className="app-year">{year}</span> <span className="app-season">Season <span className="app-value">{seasons[0]}</span></span>
           </h2>
         </div>
         <div className="app-progress flex-fill">
           <div className="progress">
-            <div class="milestone one"></div>
-            <div class="milestone two"></div>
+            <div className="milestone one"></div>
+            <div className="milestone two"></div>
             <div className="progress-bar" style={{ width: progress + '%' }} role="progressbar" aria-valuenow={{ progress }} aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
@@ -61,7 +60,8 @@ function App() {
         <div className="app-activity flex-grow-1 d-flex flex-column">
           <div className="app-map flex-grow-1">
             <ComposableMap>
-              <Geographies geography={geoUrl} fill="#999999" stroke="#f5f5f5" strokeWidth={0.5}>
+              <Graticule stroke="#2b3549" />
+              <Geographies geography={geoUrl} fill="#2f3b52" stroke="#848c9f" strokeWidth={0.5}>
                 {({ geographies }) =>
                   geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} />)
                 }
