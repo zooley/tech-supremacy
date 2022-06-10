@@ -50,8 +50,8 @@ function App() {
           <span className="app-value">{units}</span> <span className="app-unit text-muted">Units</span>
         </div>
         <div className="app-freedom flex-fill">
-          <span className="app-head">{freedom}</span><br />
-          <span className="app-value">(un)free</span>
+          <span className="app-value">{freedom}</span><br />
+          <span className="app-head">(un)free</span>
         </div>
       </header>
       <main className="app-main d-flex">
@@ -60,8 +60,8 @@ function App() {
         </div>
         <div className="app-activity flex-grow-1 d-flex flex-column">
           <div className="app-map flex-grow-1">
-            <ComposableMap>
-              <Geographies geography={geoUrl} fill="#999999" stroke="#f5f5f5" strokeWidth={0.5}>
+            <ComposableMap width={1000} height={490}>
+              <Geographies geography={geoUrl} fill="#344c68" stroke="#adb5c7" strokeWidth={0.5}>
                 {({ geographies }) =>
                   geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} />)
                 }

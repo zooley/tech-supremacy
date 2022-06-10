@@ -1,72 +1,66 @@
 import ReactCountryFlag from 'react-country-flag';
 import React, { Component } from 'react';
-
+import save from './img/star.png'
 
 export class Activity extends Component {
   render() {
     return (
-      <table className="table">
+      <div className='tableFixHead'>
+      <table>
         <thead>
           <tr>
-            <th scope="col">Country Name</th>
-            <th scope="col" className="text-end">Purchase Amount</th>
-            <th scope="col" className="text-end">Market Size</th>
-            <th scope="col" className="text-center">Freedon Score</th>
-            <th scope="col" className="text-center">Status</th>
-            <th scope="col" className="text-end">Save for later</th>
+            <th scope="col">COUNTRY NAME</th>
+            <th scope="col">PURCHASE AMOUNT</th>
+            <th scope="col">MARKET SIZE</th>
+            <th scope="col">FREEDOM SCORE</th>
+            <th scope="col">STATUS</th>
+            <th scope="col">SAVE FOR LATER</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td><ReactCountryFlag countryCode="US" svg /> Country name</td>
-            <td className="text-end">000,000,000,000</td>
-            <td className="text-end">000,000,000</td>
-            <td className="text-center">00</td>
-            <td className="text-center"><span className="badge bg-success">Open</span></td>
-            <td className="text-end">
-              <button>
-                Save
-              </button>
+            <td>000,000,000,000</td>
+            <td>000,000,000</td>
+            <td>00</td>
+            <td><span className="badge badge-pill bg-success">Open</span></td>
+            <td>
+                <img src={save} alt='save'/>
             </td>
           </tr>
           <tr>
             <td><ReactCountryFlag countryCode="US" svg /> Country name</td>
-            <td className="text-end">000,000,000,000</td>
-            <td className="text-end">000,000,000</td>
-            <td className="text-center">00</td>
-            <td className="text-center"><span className="badge bg-danger">Counter</span></td>
-            <td className="text-end">
-              <button>
-                Save
-              </button>
+            <td>000,000,000,000</td>
+            <td>000,000,000</td>
+            <td>00</td>
+            <td><span className="badge badge-pill bg-danger">Counter</span></td>
+            <td>
+              <img src={save} alt='save'/>
             </td>
           </tr>
           <tr>
             <td><ReactCountryFlag countryCode="AU" svg /> Country name</td>
-            <td className="text-end">000,000,000,000</td>
-            <td className="text-end">000,000,000</td>
-            <td className="text-center">00</td>
-            <td className="text-center"><span className="badge bg-success">Open</span></td>
-            <td className="text-end">
-              <button>
-                Save
-              </button>
+            <td>000,000,000,000</td>
+            <td>000,000,000</td>
+            <td>00</td>
+            <td><span className="badge badge-pill bg-success">Open</span></td>
+            <td>
+              <img src={save} alt='save'/>
             </td>
           </tr>
           <tr>
             <td><ReactCountryFlag countryCode="AU" svg /> Country name</td>
-            <td className="text-end">000,000,000,000</td>
-            <td className="text-end">000,000,000</td>
-            <td className="text-center">00</td>
-            <td className="text-center"><span className="badge bg-success">Open</span></td>
-            <td className="text-end">
-              <button>
-                Save
-              </button>
+            <td>000,000,000,000</td>
+            <td>000,000,000</td>
+            <td>00</td>
+            <td><span className="badge badge-pill bg-success">Open</span></td>
+            <td>
+              <img src={save} alt='save'/>
             </td>
           </tr>
         </tbody>
-      </table>
-        );
+        </table>
+      </div>
+      );
     }
 }
