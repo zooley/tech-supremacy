@@ -5,6 +5,13 @@
   color: white;
 }
 
+.card-head {
+  padding:1rem 0 0 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #2f3b52;
+}
 .card-body {
   height: 90vh;
   overflow: auto;
@@ -12,7 +19,7 @@
 
 /* App styles */
 .app {
-  height: 100%;
+  height: 100vh;
 }
 
 .app-logo {
@@ -26,25 +33,44 @@
   }
 }
 
+.app-activity {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+}
+
 .app-map {
-  height: 55vh;
+  height: 60%;
 }
 
 .app-available {
-  height: 100%;
   overflow: auto;
   padding: 0 10px 0 10px;
 }
 
 .app-header {
   height: 10vh;
-  margin: 0 1rem;
+  /* margin: 0 1rem; */
   display: flex;
   flex-direction: row;
   color: white;
   font-size: 80%;
-  vertical-align: auto;
+  align-items: center;
+  justify-content: space-between;
 }
+
+.app-main {
+  height: 90vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-main>*:nth-child(2) {
+  flex: 1 1 60%;
+}
+
 .app-header h2 {
   margin: 0;
   padding: 0;
@@ -53,10 +79,12 @@
 }
 .app-timer {
   font-size: 2rem;
-  line-height: 1;
-  background-color: rgb(110, 110, 110);
+  background-color: black;
   color: #fff;
+  line-height: 0.75;
+  border-radius: 3rem;
 }
+
 .app-header>div {
   padding: 1rem;
 }
@@ -67,7 +95,7 @@
 .app-header .progress {
   width: 20vw;
   height: 6px;
-  margin: 0.9rem 0 0 0;
+  margin: 0.45rem 0 0.45rem 0;
 }
 
 .app-value {
@@ -80,17 +108,17 @@
 }
 .app-header>.app-gdp {
   padding-left: 3.5rem;
-  background: url('../img/coins.png') 1em center no-repeat;
-  background-size: auto 50%;
+  background: url('../img/coins.svg') 1em center no-repeat;
+  background-size: auto 40%;
 }
 .app-header>.app-units {
   padding-left: 3.5rem;
-  background: url('../img/boxes.png') 1em center no-repeat;
-  background-size: auto 50%;
+  background: url('../img/phone.svg') 1em center no-repeat;
+  background-size: auto 40%;
 }
 .app-header>.app-freedom {
   padding-left: 3.5rem;
-  background: url('../img/torch.png') 1em center no-repeat;
+  background: url('../img/hand.svg') 1em center no-repeat;
   background-size: auto 50%;
 }
 .app-freedom-indicator {
@@ -99,8 +127,8 @@
   height: 1.5rem;
 }
 .app-freedom-indicator.free {
-  background: url('../img/torch.png') top center no-repeat;
-  background-size: auto 100%;
+  background: url('../img/coins.svg') top center no-repeat;
+  background-size: auto 50%;
 }
 
 .app-news-item .progress {
@@ -116,6 +144,7 @@ main,
   width: 20vw;
   padding: 0 0 0 0;
 }
+
 .panel h2 {
   font-size: 1.2rem;
 }
@@ -127,7 +156,7 @@ main,
 }
 
 .app-bid {
-  margin-top: 1rem;
+  margin-bottom: 1rem;
   font-size: 80%;
   padding: 1rem;
   text-align: center;

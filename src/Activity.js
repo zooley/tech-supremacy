@@ -1,8 +1,7 @@
-import ReactCountryFlag from 'react-country-flag';
-import React, { Component } from 'react';
-import save from './img/star.png'
-
+import React, { Component, useState } from 'react';
+import CountryData from './Components/CountryData'
 export class Activity extends Component {
+
   render() {
     return (
       <div className='tableFixHead'>
@@ -17,48 +16,7 @@ export class Activity extends Component {
             <th scope="col">SAVE FOR LATER</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td><ReactCountryFlag countryCode="US" svg /> Country name</td>
-            <td>000,000,000,000</td>
-            <td>000,000,000</td>
-            <td>00</td>
-            <td><span className="badge badge-pill bg-success">Open</span></td>
-            <td>
-                <img src={save} alt='save'/>
-            </td>
-          </tr>
-          <tr>
-            <td><ReactCountryFlag countryCode="US" svg /> Country name</td>
-            <td>000,000,000,000</td>
-            <td>000,000,000</td>
-            <td>00</td>
-            <td><span className="badge badge-pill bg-danger">Counter</span></td>
-            <td>
-              <img src={save} alt='save'/>
-            </td>
-          </tr>
-          <tr>
-            <td><ReactCountryFlag countryCode="AU" svg /> Country name</td>
-            <td>000,000,000,000</td>
-            <td>000,000,000</td>
-            <td>00</td>
-            <td><span className="badge badge-pill bg-success">Open</span></td>
-            <td>
-              <img src={save} alt='save'/>
-            </td>
-          </tr>
-          <tr>
-            <td><ReactCountryFlag countryCode="AU" svg /> Country name</td>
-            <td>000,000,000,000</td>
-            <td>000,000,000</td>
-            <td>00</td>
-            <td><span className="badge badge-pill bg-success">Open</span></td>
-            <td>
-              <img src={save} alt='save'/>
-            </td>
-          </tr>
-        </tbody>
+          <CountryData addBid={this.props.addBid} removeBid={this.props.removeBid} />
         </table>
       </div>
       );
