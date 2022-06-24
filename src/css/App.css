@@ -1,6 +1,7 @@
 /* Bootstrap overrides */
 .card {
   border-color: transparent;
+  border: 0px;
   background-color: #2f3b52;
   color: white;
 }
@@ -12,10 +13,121 @@
   z-index: 1;
   background-color: #2f3b52;
 }
+
 .card-body {
   height: 90vh;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
 }
+
+.draft {
+  text-align: center;
+  font-size: medium;
+  border: transparent;
+}
+
+/* draft bids */
+.draft-head {
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #222a3d;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.draft-nav {
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-weight: bold;
+  width: 70%;
+  margin: auto;
+}
+
+.draft-head button, .draft-nav button {
+  background-color: transparent;
+  border: transparent;
+  color: #2066ff;
+  font-size: medium;
+  font-weight: bolder;
+}
+
+.draft-body {
+  background-color: #344c68;
+  border: transparent;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.draft-title {
+  text-align: left;
+  font-size: large;
+  font-weight: bold;
+}
+
+.draft-info {
+  padding-top: 1rem;
+  border: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.draft-info .info-1 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 30%;
+}
+
+.draft-info .info-2 {
+  padding-left: 3rem;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 70%;
+  height: auto;
+}
+
+.info-1 span {
+  padding-top: 1rem;
+  font-size: small;
+}
+
+.info-2 span {
+  font-size: small;
+  font-weight: light;
+}
+
+.info-2 .sub-header {
+  font-weight: bold;
+}
+
+.info-2 .status {
+  font-size: medium;
+  color: #39b58c;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.draft-info img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
 
 /* App styles */
 .app {
@@ -91,7 +203,9 @@
 .app-head {
   text-transform: uppercase;
   font-size: 10px;
+  margin-bottom: 0%;
 }
+
 .app-header .progress {
   width: 20vw;
   height: 6px;
@@ -145,6 +259,11 @@ main,
   padding: 0 0 0 0;
 }
 
+.list {
+  height: 100%;
+  width: 40vw;
+}
+
 .panel h2 {
   font-size: 1.2rem;
 }
@@ -155,33 +274,93 @@ main,
   height: 100%;
 }
 
+/*bid List*/
+
+.bid-head-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bid-head {
+  text-align: center;
+}
+
+.bid-title {
+  text-align: left;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.bid-body {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  align-items: flex-end;
+  padding-right: 1rem;
+  padding-top: 1rem;
+}
+
 .app-bid {
   margin-bottom: 1rem;
-  font-size: 80%;
   padding: 1rem;
-  text-align: center;
+  line-height: 2rem;
+  text-align: left;
+  justify-content: center;
   text-transform: uppercase;
   border: 1px solid #ccc;
+  width: 18vw;
+  max-height: 9vh;
 }
 .app-bid.open {
   border: 1px dashed #ccc;
-  background-color: #344c68;
 }
-.app-bid.pending {
+.app-bid.lost {
   background-color: #344c68;
+  border-color: #344c68;
   box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
 }
 .app-bid.won {
-  background-color: #39b24d;
+  background-color: #325f50;
   box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
   color: white;
-  border-color: #39b24d;
+  border-color: #325f50;
 }
-.app-bid.draft {
+.app-bid.counter {
   background-color: #fc5e66;
   border-color: #fc5e66;
   box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
   color: black;
+  width: 19vw;
+  justify-content: left;
+  text-align: left;
+}
+
+.app-bid.pending {
+  background-color: grey;
+  border-color: grey;
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+  color: black;
+}
+
+.app-bid.drafted {
+  background-color: rgba(206, 206, 206, 0.8);
+  border-color: rgba(206, 206, 206, 0.8);
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+  color: black;
+}
+
+.app-bid-status {
+  font-size: medium;
+  font-weight: bold;
+}
+
+.editing {
+  margin: 0;
+  padding-right: 0.5rem;
+  height: 100%;
+  border-color: transparent;
 }
 
 .app-progress .progress {

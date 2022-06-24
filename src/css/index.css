@@ -66,3 +66,7 @@ td:last-child {
 td img {
   height: 3vh;
 }
+
+.emoji {
+  font-size: 25px;
+}
