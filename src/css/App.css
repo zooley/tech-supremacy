@@ -20,115 +20,6 @@
   flex-direction: column;
 }
 
-.draft {
-  text-align: center;
-  font-size: medium;
-  border: transparent;
-}
-
-/* draft bids */
-.draft-head {
-  padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background-color: #222a3d;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: center;
-}
-
-.draft-nav {
-  padding: 1rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  font-weight: bold;
-  width: 70%;
-  margin: auto;
-}
-
-.draft-head button, .draft-nav button {
-  background-color: transparent;
-  border: transparent;
-  color: #2066ff;
-  font-size: medium;
-  font-weight: bolder;
-}
-
-.draft-body {
-  background-color: #344c68;
-  border: transparent;
-  padding: 1rem 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
-.draft-title {
-  text-align: left;
-  font-size: large;
-  font-weight: bold;
-}
-
-.draft-info {
-  padding-top: 1rem;
-  border: transparent;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.draft-info .info-1 {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  width: 30%;
-}
-
-.draft-info .info-2 {
-  padding-left: 3rem;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  width: 70%;
-  height: auto;
-}
-
-.info-1 span {
-  padding-top: 1rem;
-  font-size: small;
-}
-
-.info-2 span {
-  font-size: small;
-  font-weight: light;
-}
-
-.info-2 .sub-header {
-  font-weight: bold;
-}
-
-.info-2 .status {
-  font-size: medium;
-  color: #39b58c;
-  font-weight: bold;
-  text-align: center;
-  padding-top: 2rem;
-}
-
-.draft-info img{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-
-
 /* App styles */
 .app {
   height: 100vh;
@@ -313,40 +204,50 @@ main,
   width: 18vw;
   max-height: 9vh;
 }
-.app-bid.open {
+
+/* bid states */
+
+.empty {
   border: 1px dashed #ccc;
+  background-color: transparent;
+  color: white;
 }
-.app-bid.lost {
+.pending {
+  background-color: transparent;
+  color: white;
+}
+.lost {
   background-color: #344c68;
   border-color: #344c68;
   box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+  color: white;
 }
-.app-bid.won {
+.won {
   background-color: #325f50;
   box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
   color: white;
   border-color: #325f50;
 }
-.app-bid.counter {
+.counter {
   background-color: #fc5e66;
   border-color: #fc5e66;
   box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
   color: black;
-  width: 19vw;
   justify-content: left;
   text-align: left;
 }
-
-.app-bid.pending {
+.app-bid.counter {
+  width: 19vw;
+}
+.drafted {
   background-color: grey;
   border-color: grey;
   box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
   color: black;
 }
-
-.app-bid.drafted {
-  background-color: rgba(206, 206, 206, 0.8);
-  border-color: rgba(206, 206, 206, 0.8);
+.open {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.8);
   box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
   color: black;
 }
@@ -366,7 +267,13 @@ main,
 .app-progress .progress {
   position: relative;
   overflow: visible;
+  background-color: #64718c;
+  border-radius: 4px;
 }
+.progress-bar {
+  border-radius: 4px;
+}
+
 .progress .one,
 .progress .two {
   position: absolute;
@@ -376,8 +283,8 @@ main,
   height: 16px;
   width: 16px;
   border-radius: 50%;
-  background-color: inherit;
-  border: 1px solid #fff;
+  background-color: #2f3b52;
+  border: 1px solid #59637f;
 }
 .progress .one {
   left: 33.3%;

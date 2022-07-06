@@ -1,11 +1,10 @@
 import ReactCountryFlag from 'react-country-flag';
 import React, { useState } from 'react';
-import database from './Data'
 import unsave from '../img/star.svg'
 import save from '../img/star-click.svg'
 
-function Countrydata({addBid, removeBid}) {
-  const [dataArr, setData] = useState(database);
+function Countrydata({dataArr, addBid, removeBid}) {
+  
   
   return (
     <tbody>
@@ -17,7 +16,7 @@ function Countrydata({addBid, removeBid}) {
               <td>{data.amount}</td>
               <td>{data.market}</td>
               <td>{data.freedom}</td>
-              <td><span className="badge badge-pill bg-success">{data.status}</span></td>
+              <td><span className={`badge badge-pill ${data.status}`}>{data.status}</span></td>
               <td><SaveIcon data={data} addBid={addBid} removeBid={removeBid} /></td>
             </tr>
         )
@@ -32,7 +31,7 @@ function SaveIcon({ data, addBid, removeBid }) {
     if (toggle) {
       setToggle(false);
       addBid(data);
-    } else {
+    } else if (data.status === 'counter' || data.status === 'open'){
       setToggle(true);
       removeBid(data);
     }

@@ -4,8 +4,15 @@ import Pencil from './img/Edit.png'
   
 function Bidding({countrylist, openDraft}) {
   function checkStatus(country) {
-    return country.status === 'counter';
+    return country.status === 'counter' || country.status === 'open' || country.status === 'drafted';
   }
+
+  function handleClick(country) {
+    if (checkStatus(country)) {
+      openDraft(country.name);
+    }
+  }
+  
   return (
     <div className="panel card rounded shadow-sm">
       <div className="card-head rounded bid-head-container">
@@ -15,14 +22,15 @@ function Bidding({countrylist, openDraft}) {
       <div className="bid-body">
         {countrylist.map(
           country =>
-            <div className={`app-bid rounded ${country.status}`} onClick={checkStatus(country) ? openDraft : null}>
+            <button className={`app-bid rounded ${country.status}`} onClick={() => handleClick(country)}>
               {checkStatus(country) ? <img className="editing" src ={Pencil} alt="Edit" /> : ''}
               <span className="bid-title">
                 {country.countryCode === '' ? '' : <ReactCountryFlag className="emoji" countryCode={country.countryCode} svg />}
-                {country.name === '' ? '' : ' ' + country.name + ': '}
+                &ensp;
+                {country.name === '' ? '' : country.name + ': '}
                 {country.status}
               </span>
-            </div>
+            </button>
             
         )}
       </div>

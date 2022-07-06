@@ -5,9 +5,11 @@ import Bidding from './Bidding';
 import { Activity } from './Activity';
 import { GameOver } from './GameOver';
 import './css/App.css';
+import './css/Draft.css';
 import { useState } from 'react';
 import Header from './Components/Header';
 import DraftBid from './Components/DraftBid';
+import database from './Components/Data'
 
 let complete = false;
 
@@ -18,29 +20,36 @@ const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-map
 const country = {
     countryCode: '',
     name: '',
-    status: 'open'
+    status: 'empty'
 };
 
 function App() {
   const [bidList, setBidList] = useState({
       countryList: Array(10).fill(country),
-      count : 0
+      count: 0
   })
 
-  const [draftPanel, setDraft] = useState(false);
+  const [draftPanel, setDraft] = useState({
+    name: '',
+    status: false
+  });
+
+  const [dataArr, setData] = useState(database);
 
   function statusScore(status) {
     switch (status) {
       case "counter":
-        return 5;
+        return 6;
       case "pending":
-        return 4;
-      case "won":
         return 3;
-      case "lost":
+      case "won":
         return 2;
-      case "drafted":
+      case "lost":
         return 1;
+      case "drafted":
+        return 4;
+      case "open":
+        return 5;
       default:
         return 0;
     }
@@ -87,11 +96,18 @@ function App() {
   }
 
   function closeDraft() {
-    setDraft(false);
+    setDraft({
+      name: '',
+      status: false
+    });
   }
 
-  function openDraft() {
-    setDraft(true);
+  const openDraft = (name) => {
+    console.log(name);
+    setDraft({
+      name: name,
+      status: true
+    });
   }
 
   if (complete) {
@@ -101,7 +117,7 @@ function App() {
     <div className="app flex-column">
       <Header />
       <main className="app-main">
-        {draftPanel === false ? <div className="app-news pane"> <Newsfeed /> </div> : <div/>}
+        {draftPanel.status === false ? <div className="app-news pane"> <Newsfeed /> </div> : <div/>}
         <div className="app-activity">
           <div className="app-map">
             <ComposableMap width={1000} height={490}>
@@ -113,15 +129,15 @@ function App() {
             </ComposableMap>
           </div>
           <div className="app-available">
-            <Activity addBid={addBid} removeBid={removeBid} />
+            <Activity dataArr={dataArr} addBid={addBid} removeBid={removeBid} />
           </div>
         </div>
-        {draftPanel === false ?
+        {draftPanel.status === false ?
           <div className="app-bids pane">
             <Bidding countrylist={bidList.countryList} openDraft={openDraft} />
           </div>
           : <div className='app-bids list'>
-            <DraftBid countryList={bidList.countryList} closeDraft={closeDraft} />
+            <DraftBid country={draftPanel.name} dataArr={dataArr} countryList={bidList.countryList} closeDraft={closeDraft} />
           </div>}
       </main>
     </div>

@@ -16,7 +16,7 @@ export class Activity extends Component {
             <th scope="col">SAVE FOR LATER</th>
           </tr>
         </thead>
-          <CountryData addBid={this.props.addBid} removeBid={this.props.removeBid} />
+          <CountryData dataArr={this.props.dataArr} addBid={this.props.addBid} removeBid={this.props.removeBid} />
         </table>
       </div>
       );

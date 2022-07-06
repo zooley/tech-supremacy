@@ -22,7 +22,7 @@ const Header = () => {
           <div className="progress">
             <div class="milestone one"></div>
             <div class="milestone two"></div>
-            <div className="progress-bar" style={{ width: progress + '%' }} role="progressbar" aria-valuenow={{ progress }} aria-valuemin="0" aria-valuemax="100"></div>
+          <div className="progress-bar" style={{ width: progress + '%' }} role="progressbar" aria-valuenow={{ progress }} aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
         <div className="app-timer">
