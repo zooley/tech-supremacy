@@ -2,8 +2,10 @@ import React, {Component, useState} from 'react'
 import ReactCountryFlag from 'react-country-flag';
 import profile from '../img/profile.png'
 import '../css/Form.css'
+import { isEditable } from '@testing-library/user-event/dist/utils';
 function DraftBid({ country, dataArr, countryList, closeDraft }) {
   const [score, setScore] = useState(0);
+  const [subsidized, setSubsidized] = useState(false);
   const data = dataArr.find(ele => ele.name === country);
 
   function increment() {
@@ -93,9 +95,9 @@ function DraftBid({ country, dataArr, countryList, closeDraft }) {
             <div className='info-2 vline'>
               <label className='sub-header' for='subsidy'>Subsidize?</label>
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch"/>
+                <input class="form-check-input" type="checkbox" role="switch" defaultChecked onChange={() => subsidized ? setSubsidized(false) : setSubsidized(true)}/>
                 <span class="slider round"></span>
-                <input type="number" id='subsidy' placeholder='0' min='0' style={{width: '60%'}}></input>
+                <input type="number" id='subsidy' placeholder='0' min='0' style={{width: '60%'}} disabled={subsidized}></input>
                 <span className='units'> units</span>
               </div>
 

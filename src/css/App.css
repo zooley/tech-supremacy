@@ -44,11 +44,13 @@
 
 .app-map {
   height: 60%;
+  padding: 0 10px 0 10px;
 }
 
 .app-available {
   overflow: auto;
   padding: 0 10px 0 10px;
+  height: 40%;
 }
 
 .app-header {

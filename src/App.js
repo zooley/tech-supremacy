@@ -11,6 +11,10 @@ import Header from './Components/Header';
 import DraftBid from './Components/DraftBid';
 import database from './Components/Data'
 
+//map imports
+import GeoChart from './Components/GeoChart'
+import map from './globe.geo.json'
+
 let complete = false;
 
 
@@ -24,17 +28,18 @@ const country = {
 };
 
 function App() {
+  const [dataArr, setData] = useState(database);
+  const list = dataArr.filter(cty => cty.status !== 'open');
+
   const [bidList, setBidList] = useState({
-      countryList: Array(10).fill(country),
-      count: 0
+    countryList: list.map(ele => ({countryCode: ele.countryCode, name: ele.name, status: ele.status})).concat(Array(10 - list.length).fill(country)).sort(compare),
+    count: list.length
   })
 
   const [draftPanel, setDraft] = useState({
     name: '',
     status: false
   });
-
-  const [dataArr, setData] = useState(database);
 
   function statusScore(status) {
     switch (status) {
@@ -117,19 +122,20 @@ function App() {
     <div className="app flex-column">
       <Header />
       <main className="app-main">
-        {draftPanel.status === false ? <div className="app-news pane"> <Newsfeed /> </div> : <div/>}
+        {draftPanel.status === false ? <div className="app-news pane" style={{width: "25%"}}> <Newsfeed /> </div> : <div/>}
         <div className="app-activity">
           <div className="app-map">
-            <ComposableMap width={1000} height={490}>
+            <GeoChart map={map} />
+            {/* <ComposableMap width={1000} height={490}>
               <Geographies geography={geoUrl} fill="#344c68" stroke="#adb5c7" strokeWidth={0.5}>
                 {({ geographies }) =>
                   geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} />)
                 }
               </Geographies>
-            </ComposableMap>
+            </ComposableMap> */}
           </div>
           <div className="app-available">
-            <Activity dataArr={dataArr} addBid={addBid} removeBid={removeBid} />
+            <Activity bidList={list} dataArr={dataArr} addBid={addBid} removeBid={removeBid} />
           </div>
         </div>
         {draftPanel.status === false ?

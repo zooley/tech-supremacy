@@ -6,6 +6,10 @@ input {
   width: 70%;
 }
 
+input[type='number']:disabled {
+  opacity: 0.5;
+}
+
 .units {
   opacity: 0.5;
 }
