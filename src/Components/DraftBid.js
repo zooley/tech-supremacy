@@ -112,7 +112,7 @@ function DraftBid({ country, dataArr, countryList, closeDraft }) {
               <label className='sub-header' for='score'>Political Freedom Score</label>
               <div>
                 <button className='minus-button' type='button' onClick={decrement} >-</button>
-                <input type='number' id='score' min={0} max={10} style={{ width: '25%', textAlign: 'center' }} value={score} readOnly/>
+                <input type='number' id='score' min={0} max={10} style={{ width: '25%', textAlign: 'center', borderRadius: 0 }} value={score} readOnly/>
                 <button className='plus-button' type='button' onClick={increment}>+</button>
                 <span> of 10</span>
               </div>

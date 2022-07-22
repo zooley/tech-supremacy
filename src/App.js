@@ -17,10 +17,6 @@ import map from './globe.geo.json'
 
 let complete = false;
 
-
-const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
-
-
 const country = {
     countryCode: '',
     name: '',
